@@ -1,0 +1,15 @@
+class Solution:
+    def helper(self,n,result,left,right,string):
+        if right > left:
+            return
+        if left == n and left == right:
+            result.append(string)
+        if left < n:
+            self.helper(n,result,left +1,right,string+'(')
+        if right < left:
+            self.helper(n,result,left ,right+1,string+')')
+            
+    def generateParenthesis(self, n: int) -> List[str]:
+        result = []
+        self.helper(n,result,0,0,'')
+        return result
